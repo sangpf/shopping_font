@@ -97,7 +97,6 @@ public class SkuServiceImpl implements SkuService {
 		return skus;
 	}
 
-	@Override
 	public List<Sku> getStock(Integer productId) {
 		// TODO Auto-generated method stub
 		List<Sku> skus = skuDao.getStock(productId);

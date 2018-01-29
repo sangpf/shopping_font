@@ -278,16 +278,18 @@ function buy(productId){
 			<li><label>选择颜色：</label>
 				<div id="colors" class="pre spec">
 					<c:forEach items="${colors }" var="color">
-					<a onclick="colorToRed(this,${color.id})" href="javascript:void(0)" title="${color.name }" class="changToWhite"><img width="25" height="25" data-img="1" src="/res/img/pic/ppp00.jpg" alt="${color.name } "><i>${color.name }</i></a>
+						<a onclick="colorToRed(this,${color.id})" href="javascript:void(0)" title="${color.name }" class="changToWhite">
+							<img width="25" height="25" data-img="1" src="/res/img/pic/ppp00.jpg" alt="${color.name } "><i>${color.name }</i>
+						</a>
 					</c:forEach>
 				</div>
 			</li>
 			<li id="sizes"><label>尺　　码：</label>
-						<a href="javascript:void(0)" class="not-allow"  id="S" onclick="sizeToRed(this,'S')">S</a>
-						<a href="javascript:void(0)" class="not-allow"  id="M" onclick="sizeToRed(this,'M')">M</a>
-						<a href="javascript:void(0)" class="not-allow"  id="L" onclick="sizeToRed(this,'L')">L</a>
-						<a href="javascript:void(0)" class="not-allow"  id="XL" onclick="sizeToRed(this,'XL')">XL</a>
-						<a href="javascript:void(0)" class="not-allow"  id="XXL" onclick="sizeToRed(this,'XXL')">XXL</a>
+				<a href="javascript:void(0)" class="not-allow"  id="S" onclick="sizeToRed(this,'S')">S</a>
+				<a href="javascript:void(0)" class="not-allow"  id="M" onclick="sizeToRed(this,'M')">M</a>
+				<a href="javascript:void(0)" class="not-allow"  id="L" onclick="sizeToRed(this,'L')">L</a>
+				<a href="javascript:void(0)" class="not-allow"  id="XL" onclick="sizeToRed(this,'XL')">XL</a>
+				<a href="javascript:void(0)" class="not-allow"  id="XXL" onclick="sizeToRed(this,'XXL')">XXL</a>
 			</li>
 			<li><label>我 要 买：</label>
 				<a id="sub" class="inb arr" style="border: 1px solid #919191;width: 10px;height: 10px;line-height: 10px;text-align: center;" title="减" href="javascript:void(0);" >-</a>

@@ -335,7 +335,7 @@ function myOrder(){
 				<ul class="uls i_150x150 x4_150x150b">
 				<c:forEach items="${pagination.list }" var="entry">
 					<li>
-						<a href="javascript:void(0)" onclick="window.open('/html/product/${entry.id}.html')" title="${entry.name }" class="pic"><img src="${entry.img.allUrl }" alt="${entry.name }" /></a>
+						<a href="javascript:void(0)" target="_blank" onclick="window.open('/html/product/${entry.id}.html')" title="${entry.name }" class="pic"><img src="${entry.img.allUrl }" alt="${entry.name }" /></a>
 						<dl>
 							<!-- dt 10个文字+... -->
 							<dt><a href="javascript:void(0)"  onclick="window.open('/product/detail.shtml?id=${entry.id}')" title="${entry.name }" >${entry.name }</a></dt>
@@ -349,14 +349,14 @@ function myOrder(){
 					</li>
 				</c:forEach>
 				</ul>
-			<div class="page pb15">
-				<span class="r inb_a page_b">
-					<c:forEach items="${pagination.pageView }" var="page">
-						${page }
-					</c:forEach>
-				</span>
+				<div class="page pb15">
+					<span class="r inb_a page_b">
+						<c:forEach items="${pagination.pageView }" var="page">
+							${page }
+						</c:forEach>
+					</span>
+				</div>
 			</div>
-	</div>
 </div>
 </div>
 <div class="mode">

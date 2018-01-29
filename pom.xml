@@ -259,13 +259,14 @@
 			<artifactId>json</artifactId>
 			<version>20131018</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>oscache</groupId>
-			<artifactId>oscache</artifactId>
-			<version>2.4.1</version>
-		</dependency>
-		<!--jerson -->
+
+	  <dependency>
+		  <groupId>opensymphony</groupId>
+		  <artifactId>oscache</artifactId>
+		  <version>2.4.1</version>
+	  </dependency>
+
+	  <!--jerson -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-client</artifactId>

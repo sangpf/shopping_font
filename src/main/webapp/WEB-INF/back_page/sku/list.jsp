@@ -34,10 +34,10 @@ function addSku(skuId){
 	
 	//保存
 	var url = "/sku/add.do";
-	var params = {"marketPrice" : m,"skuPrice" : p,"stockInventory" : i,"skuUpperLimit" : l,"deliveFee" : f,"id" : skuId };
-	$.post(url,params,function(data){
+	var params = {"marketPrice" : m , "skuPrice" : p, "stockInventory" : i,"skuUpperLimit" : l,"deliveFee" : f,"id" : skuId };
+	$.post(url , params , function(data){
 		alert(data.message);
-	},"json");
+	}, "json");
 }
 </script>
 </head>

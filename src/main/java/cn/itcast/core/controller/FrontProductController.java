@@ -49,8 +49,7 @@ public class FrontProductController {
 	private TypeService typeService;
 	@Autowired
 	private FeatureService featureService;
-	
-	
+
 	@Autowired
 	private SessionProvider sessionProvider;
 	
@@ -64,8 +63,7 @@ public class FrontProductController {
 		List<Feature> features = featureService.getFeatureList(featureQuery);
 		//显示在页面
 		model.addAttribute("features", features);
-		
-		
+
 		//分页参数
 		StringBuilder params = new StringBuilder();
 		//设置页号
@@ -80,8 +78,7 @@ public class FrontProductController {
 		boolean flag = false;
 		//条件Map窗口
 		Map<String,String> query = new LinkedHashMap<String,String>();
-		
-		
+
 		//品牌ID
 		if(null != brandId){
 			productQuery.setBrandId(brandId);
@@ -130,9 +127,6 @@ public class FrontProductController {
 		//条件
 		model.addAttribute("query", query);
 		
-		
-		
-		
 		//加载带有分页的商品
 		Pagination pagination = productService.getProductListWithPage(productQuery);
 		
@@ -141,10 +135,10 @@ public class FrontProductController {
 		pagination.pageView(url, params.toString());
 		
 		model.addAttribute("pagination", pagination);
-		
-		
+
 		return "product/product";
 	}
+
 	//跳转商品详情页
 	@RequestMapping(value = "/product/detail.shtml")
 	public String detail(Integer id,ModelMap model){
@@ -169,34 +163,13 @@ public class FrontProductController {
 		
 		return "product/productDetail";
 	}
+
 	@Autowired
 	private SkuService skuService;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	//每一个Springmvc
 	@RequestMapping(value = "/test/springmvc.do")
 	public String test(String name,Date birthday){
-		
-		
 		System.out.println();
 		return "";
 	}
@@ -210,6 +183,5 @@ public class FrontProductController {
 		
 	}
 	*/
-	
 
 }
