@@ -125,7 +125,6 @@ function colorToRed(target,id){
 }
 //点击尺码
 function sizeToRed(target,id){
-	
 	var cc = $(target).attr("class");
 	if(cc == "not-allow"){
 		return ;

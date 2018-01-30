@@ -98,7 +98,6 @@ public class SkuServiceImpl implements SkuService {
 	}
 
 	public List<Sku> getStock(Integer productId) {
-		// TODO Auto-generated method stub
 		List<Sku> skus = skuDao.getStock(productId);
 		//颜色加载完结
 		for(Sku sku : skus){
