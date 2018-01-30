@@ -35,44 +35,42 @@ public class CartController {
 
 	//购买按钮
 	@RequestMapping(value = "/shopping/buyCart.shtml")
-	public String buyCart(Integer skuId,Integer amount,Integer buyLimit,Integer productId,HttpServletRequest request ,HttpServletResponse response,ModelMap model){
+	public String buyCart(Integer skuId,Integer amount,Integer buyLimit,Integer productId,
+						  HttpServletRequest request ,HttpServletResponse response,ModelMap model){
 		//第一步:Sku
-			//springmvc 
-			ObjectMapper  om = new ObjectMapper();
-			om.setSerializationInclusion(Inclusion.NON_NULL);
-			
-			//声明
-			BuyCart buyCart = null;
-			//判断Cookie是否有购物车  
-			
-			//JESSIONID
-			//buyCart_cookie
-			//  
-			Cookie[] cookies = request.getCookies();
-			if(null != cookies && cookies.length >0){
-				for(Cookie c : cookies){
-					if(Constants.BUYCART_COOKIE.equals(c.getName())){
-						//如果有了  就使用此购物车
-						String value = c.getValue();//
-						//
-						try {
-							buyCart = om.readValue(value, BuyCart.class);
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						break;
+		//springmvc
+		ObjectMapper om = new ObjectMapper();
+		om.setSerializationInclusion(Inclusion.NON_NULL);
+
+		//声明
+		BuyCart buyCart = null;
+		//判断Cookie是否有购物车
+
+		//JESSIONID
+		//buyCart_cookie
+		Cookie[] cookies = request.getCookies();
+		if(null != cookies && cookies.length >0){
+			for(Cookie c : cookies){
+				if(Constants.BUYCART_COOKIE.equals(c.getName())){
+					//如果有了  就使用此购物车
+					String value = c.getValue();
+					try {
+						buyCart = om.readValue(value, BuyCart.class);
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
+					break;
 				}
 			}
-			//如果有了  就使用此购物车
-			//如果没有 创建购物车
-			
-			if(null == buyCart){
-				//购物车   //最后一款
-				buyCart = new BuyCart();
-			}
-			//
+		}
+		//如果有了  就使用此购物车
+		//如果没有 创建购物车
+
+		if(null == buyCart){
+			//购物车   //最后一款
+			buyCart = new BuyCart();
+		}
+		//
 		if(null != skuId){
 			Sku sku = new Sku();
 			sku.setId(skuId);
@@ -95,11 +93,10 @@ public class CartController {
 			
 			//流
 			StringWriter str = new StringWriter(); 
-			//对象转Json  写的过程     Json是字符串流
+			//对象转Json  写的过程  Json是字符串流
 			try {
 				om.writeValue(str, buyCart);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			//购物车装进Cookie中   对象转Json
@@ -126,7 +123,6 @@ public class CartController {
 			//小计
 		}
 		//小计
-		
 		model.addAttribute("buyCart", buyCart);
 		
 		return "product/cart";
@@ -140,9 +136,9 @@ public class CartController {
 		cookie.setPath("/");
 		response.addCookie(cookie);
 
-		
 		return "redirect:/shopping/buyCart.shtml";
 	}
+
 	//删除一个购物项
 	@RequestMapping(value = "/shopping/deleteItem.shtml")
 	public String deleteItem(HttpServletRequest request,Integer skuId,HttpServletResponse response){

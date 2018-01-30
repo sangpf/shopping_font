@@ -80,7 +80,7 @@ function addSku(skuId){
 				<td align="center"><a href="javascript:updateSku(${sku.id })" class="pn-opt">修改</a> | <a href="javascript:addSku(${sku.id })" class="pn-opt">保存</a></td>
 			</tr>
 		</c:forEach>
-		
+
 	</tbody>
 </table>
 </form>

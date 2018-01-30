@@ -1,11 +1,15 @@
 package cn.itcast.core.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.itcast.common.web.ResponseUtils;
+import com.alibaba.fastjson.JSON;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +35,9 @@ import cn.itcast.core.service.product.ProductService;
 import cn.itcast.core.service.product.SkuService;
 import cn.itcast.core.service.product.TypeService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 前台商品列表
  * 测试
@@ -49,10 +56,26 @@ public class FrontProductController {
 	private TypeService typeService;
 	@Autowired
 	private FeatureService featureService;
-
+	@Autowired
+	private SkuService skuService;
 	@Autowired
 	private SessionProvider sessionProvider;
-	
+
+	// 首页列表加载
+	@RequestMapping(value = "/product/list_index.shtml")
+	public void list_index(HttpServletRequest request, HttpServletResponse response){
+
+		ProductQuery productQuery = new ProductQuery();
+		productQuery.setIsShow(0);
+
+		List<Product> productList = productService.getProductList(productQuery);
+
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("productList",productList);
+
+		ResponseUtils.renderJson(response , jsonObject.toString());
+	}
+
 	//商品列表页面
 	@RequestMapping(value = "/product/display/list.shtml")
 	public String list(Integer pageNo,Integer brandId,String brandName,Integer typeId,String typeName,ModelMap model){
@@ -73,7 +96,7 @@ public class FrontProductController {
 		productQuery.setPageSize(Product.FRONT_PAGE_SIZE);
 		//设置Id倒排
 		productQuery.orderbyId(false);
-		//条件 TODO
+		//条件
 		//隐藏已选条件
 		boolean flag = false;
 		//条件Map窗口
@@ -139,6 +162,21 @@ public class FrontProductController {
 		return "product/product";
 	}
 
+	//商品详情
+	@RequestMapping(value = "/product/product_detail.shtml")
+	public void product_detail(Integer pId, HttpServletResponse response){
+		//商品加载
+		Product product = productService.getProductByKey(pId);
+
+		String jsonString = JSON.toJSONString(product);
+
+		try {
+			response.getWriter().write(jsonString);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	//跳转商品详情页
 	@RequestMapping(value = "/product/detail.shtml")
 	public String detail(Integer id,ModelMap model){
@@ -160,12 +198,8 @@ public class FrontProductController {
 			}
 		}
 		model.addAttribute("colors", colors);
-		
 		return "product/productDetail";
 	}
-
-	@Autowired
-	private SkuService skuService;
 
 	//每一个Springmvc
 	@RequestMapping(value = "/test/springmvc.do")
@@ -180,8 +214,6 @@ public class FrontProductController {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-		
 	}
 	*/
-
 }

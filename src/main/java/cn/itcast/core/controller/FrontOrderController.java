@@ -31,6 +31,10 @@ import cn.itcast.core.web.Constants;
 public class FrontOrderController {
 
 	@Autowired
+	private SessionProvider sessionProvider;
+	@Autowired
+	private SkuService skuService;
+	@Autowired
 	private OrderService orderService;
 	
 	//提交订单
@@ -88,9 +92,6 @@ public class FrontOrderController {
 		
 		return "product/confirmOrder";
 	}
-	@Autowired
-	private SessionProvider sessionProvider;
-	@Autowired
-	private SkuService skuService;
+
 	
 }

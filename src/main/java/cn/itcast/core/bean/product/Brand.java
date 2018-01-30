@@ -10,7 +10,6 @@ import cn.itcast.core.web.Constants;
  *
  */
 public class Brand implements Serializable{
-
 	/**
 	 * 
 	 */
@@ -99,6 +98,5 @@ public class Brand implements Serializable{
 				+ description + ", imgUrl=" + imgUrl + ", sort=" + sort
 				+ ", isDisplay=" + isDisplay + "]";
 	}
-	
-	
+
 }

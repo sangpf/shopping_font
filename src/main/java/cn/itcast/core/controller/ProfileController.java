@@ -56,6 +56,7 @@ public class ProfileController {
 	public String login(){
 		return "buyer/login";
 	}
+
 	//POST
 	/**
 	 * 1:验证码是否为null
@@ -69,10 +70,10 @@ public class ProfileController {
 	 * @param buyer
 	 * @param captcha
 	 * @param returnUrl
-	 * @return
 	 */
 	@RequestMapping(value = "/shopping/login.shtml",method=RequestMethod.POST)
-	public String login(Buyer buyer,String captcha,String returnUrl,ModelMap model,HttpServletRequest request,HttpServletResponse response){
+	public String login(Buyer buyer,String captcha,String returnUrl,ModelMap model,
+						HttpServletRequest request,HttpServletResponse response){
 		//验证码是否为null
 		if(StringUtils.isNotBlank(captcha)){
 			//1:JSESSIONID
@@ -112,11 +113,13 @@ public class ProfileController {
 		}
 		return "buyer/login";
 	}
+
 	//个人中心
 	@RequestMapping(value = "/buyer/index.shtml")
 	public String index(){
 		return "buyer/index";
 	}
+
 	//个人资料
 	@RequestMapping(value = "/buyer/profile.shtml")
 	public String profile(HttpServletRequest request,ModelMap model,HttpServletResponse response){
@@ -140,6 +143,7 @@ public class ProfileController {
 		
 		return "buyer/profile";
 	}
+
 	//
 	@RequestMapping(value = "/buyer/city.shtml")
 	public void city(String code,HttpServletResponse response){
@@ -150,8 +154,8 @@ public class ProfileController {
 		JSONObject jo = new JSONObject();
 		jo.put("citys", citys);
 		ResponseUtils.renderJson(response, jo.toString());
-		
 	}
+
 	//收货地址
 	@RequestMapping(value = "/buyer/deliver_address.shtml")
 	public String address(){

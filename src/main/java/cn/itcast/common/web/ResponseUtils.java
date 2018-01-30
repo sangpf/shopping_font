@@ -20,7 +20,6 @@ public class ResponseUtils {
 		try {
 			response.getWriter().write(text);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -36,6 +35,5 @@ public class ResponseUtils {
 	public static void renderText(HttpServletResponse response,String text){
 		render(response, "text/plain;charset=UTF-8", text);
 	}
-	
-	
+
 }

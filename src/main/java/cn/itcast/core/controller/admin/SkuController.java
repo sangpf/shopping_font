@@ -43,6 +43,7 @@ public class SkuController {
 		
 		return "sku/list";
 	}
+
 	//保存/修改
 	@RequestMapping(value = "/sku/add.do")
 	public void add(Sku sku ,ModelMap model,HttpServletResponse response){
