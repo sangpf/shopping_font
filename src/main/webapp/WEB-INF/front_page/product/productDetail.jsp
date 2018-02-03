@@ -121,7 +121,6 @@ function colorToRed(target,id){
 			}
 		}
 	</c:forEach>
-	
 }
 //点击尺码
 function sizeToRed(target,id){
