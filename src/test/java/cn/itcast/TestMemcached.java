@@ -27,21 +27,18 @@ public class TestMemcached extends SpringJunitTest{
 	public void testAdd() throws Exception {
 		Buyer buyer = new Buyer();
 		buyer.setUsername("范冰冰");
-		
-		
-		//memCachedClient.set("fbb2",buyer);
+
+		memCachedClient.set("fbb2",buyer);
 		
 		Map<String, Object> keySet = MemCachedUtil.getKeySet(memCachedClient);
-		
-		
+
 		Set<Entry<String, Object>> entrySet = keySet.entrySet();
 		for(Entry<String, Object> entry : entrySet){
 			System.out.println(entry.getKey());
 		}
+
+		Object object = memCachedClient.get("fbb");
 		
-		
-/*		Object object = memCachedClient.get("fbb");
-		
-		System.out.println(object);*/
+		System.out.println(object);
 	}
 }

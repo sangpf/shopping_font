@@ -27,8 +27,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import cn.itcast.common.web.ResponseUtils;
 import cn.itcast.core.web.Constants;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
+//import com.sun.jersey.api.client.Client;
+//import com.sun.jersey.api.client.WebResource;
 
 /**
  * 上传图片
@@ -81,7 +81,6 @@ public class UploadController {
 		//实例化一个Jersey
 		Client client = new Client();
 
-		
 		//另一台服务器的请求路径是?
 		String url = Constants.IMAGE_URL  + path;
 		//设置请求路径

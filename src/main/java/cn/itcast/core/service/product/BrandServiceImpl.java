@@ -44,19 +44,16 @@ public class BrandServiceImpl implements BrandService{
 	@Override
 	public void deleteBrandByKey(Integer id) {
 		brandDao.deleteBrandByKey(id);
-		
 	}
 
 	@Override
 	public void deleteBrandByKeys(Integer[] ids) {
 		brandDao.deleteBrandByKeys(ids);
-		
 	}
 
 	@Override
 	public void updateBrandByKey(Brand brand) {
 		brandDao.updateBrandByKey(brand);
-		
 	}
 
 	@Override

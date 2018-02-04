@@ -27,10 +27,8 @@ public class CacheInterceptor {
 
 	@Autowired
 	private MemCachedClient memCachedClient;
-	
 	//时间 缓存时间
 	public static final int TIMEOUT = 360000;//秒
-	
 	private int expiry = TIMEOUT;
 	
 	//配置环绕方法
@@ -43,7 +41,6 @@ public class CacheInterceptor {
 			System.out.println("Memcached服务器可能不存在或是连接不上");
 			return pjp.proceed();
 		}
-		
 		//返回值
 		if(null == memCachedClient.get(cacheKey)){
 			//回Service
@@ -53,6 +50,7 @@ public class CacheInterceptor {
 		}
 		return memCachedClient.get(cacheKey);
 	}
+
 	//后置由于数据库数据变更  清理get*
 	public void doAfter(JoinPoint jp){
 		//包名+ 类名 + 方法名 + 参数(多个)  生成Key
@@ -70,10 +68,6 @@ public class CacheInterceptor {
 			}
 		}
 	}
-	
-	
-	
-	
 	
 	//包名+ 类名 + 方法名 + 参数(多个)  生成Key
 	public String getCacheKey(ProceedingJoinPoint pjp){
@@ -93,7 +87,6 @@ public class CacheInterceptor {
 		om.setSerializationInclusion(Inclusion.NON_NULL);
 		
 		for(Object arg : args){
-			
 			//流
 			StringWriter str = new StringWriter(); 
 			
@@ -107,12 +100,11 @@ public class CacheInterceptor {
 			//参数
 			key.append(".").append(str);
 		}
-		
 		return key.toString();
 	}
+
 	public void setExpiry(int expiry) {
 		this.expiry = expiry;
 	}
-	
-	
+
 }
