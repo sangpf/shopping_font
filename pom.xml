@@ -287,12 +287,13 @@
 			<artifactId>jersey-client</artifactId>
 			<version>1.18.1</version>
 		</dependency>
-		<!--jcaptcha -->
-		<dependency>
-			<groupId>com.octo.captcha</groupId>
-			<artifactId>jcaptcha-my</artifactId>
-			<version>1.0</version>
-		</dependency>
-		
+
+	  <!-- https://mvnrepository.com/artifact/com.octo.captcha/jcaptcha-all -->
+	  <dependency>
+		  <groupId>com.octo.captcha</groupId>
+		  <artifactId>jcaptcha-all</artifactId>
+		  <version>1.0-RC4</version>
+	  </dependency>
+
   </dependencies>
 </project>
