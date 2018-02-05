@@ -27,6 +27,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import cn.itcast.common.web.ResponseUtils;
 import cn.itcast.core.web.Constants;
 
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+
 /**
  * 上传图片
  * 商品
